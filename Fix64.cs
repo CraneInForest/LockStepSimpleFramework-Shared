@@ -367,13 +367,14 @@ public partial struct Fix64 : IEquatable<Fix64>, IComparable<Fix64> {
     public static Fix64 Sin(Fix64 i)
     {
         Fix64 j = (Fix64)0;
-        for (; i < Fix64.Zero; i += Fix64.FromRaw(25736));
-        if (i > Fix64.FromRaw(25736))
-            i %= Fix64.FromRaw(25736);
-        Fix64 k = (i * Fix64.FromRaw(10)) / Fix64.FromRaw(714);
-        if (i != Fix64.Zero && i != Fix64.FromRaw(6434) && i != Fix64.FromRaw(12868) &&
-            i != Fix64.FromRaw(19302) && i != Fix64.FromRaw(25736))
-            j = (i * Fix64.FromRaw(100)) / Fix64.FromRaw(714) - k * Fix64.FromRaw(10);
+        for (; i < Fix64.Zero; i += Fix64.FromRaw(PiTimes2));
+        if (i > Fix64.FromRaw(PiTimes2))
+            i %= Fix64.FromRaw(PiTimes2);
+
+        Fix64 k = (i * Fix64.FromRaw(100000000)) / Fix64.FromRaw(7145244444);
+        if (i != Fix64.Zero && i != Fix64.FromRaw(6434) && i != Fix64.FromRaw(Pi) &&
+            i != Fix64.FromRaw(19302) && i != Fix64.FromRaw(PiTimes2))
+            j = (i * Fix64.FromRaw(100000000)) / Fix64.FromRaw(7145244444) - k * Fix64.FromRaw(10);
         if (k <= Fix64.FromRaw(90))
             return sin_lookup(k, j);
         if (k <= Fix64.FromRaw(180))
